@@ -17,7 +17,7 @@ namespace SimpleTasks
 
         private int NumbersNoRange;
 
-        public Task12(int count = 50)
+        public Task12(int count = 20)
         {
             array = new int[count];
             for(int i = 0; i < count; i++)

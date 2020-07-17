@@ -27,18 +27,25 @@ namespace SimpleTasks
         private int PositiveNumbers;
         private List<Coordinates> ZeroElementCoordinates = new List<Coordinates>();
         
-        public void Print(int  negative, int positive, string[] zeroElementCoordinates)
+        public void Print()
         {
-            Console.WriteLine($"Количество элементов матрицы больше 0 состовляет : {PositiveNumbers}");
-            Console.WriteLine($"Количество элементов матрицы меньше 0 состовляет : {NegativeNumbers}");
-            Console.WriteLine("Координаты элементов матрицы равные 0 :");
-            foreach(var coordinat in ZeroElementCoordinates)
+            Console.WriteLine($"Количество элементов матрицы больше 0 состовляет : {PositiveNumbers};");
+            Console.WriteLine($"Количество элементов матрицы меньше 0 состовляет : {NegativeNumbers};");
+            if (ZeroElementCoordinates.Count == 0)
             {
-                Console.WriteLine($"[{coordinat.Row},{coordinat.Column}]");
+                Console.WriteLine("Координаты элементов матрицы равные 0 не существует;");
+            }
+            else
+            {
+                Console.Write("Координаты элементов матрицы равные 0: ");
+                foreach (var coordinat in ZeroElementCoordinates)
+                {
+                    Console.Write($"[{coordinat.Row},{coordinat.Column}]; ");
+                }
             }
         }
 
-        private void Execute(int[,] array)
+        public void Execute(int[,] array)
         {
             NegativeNumbers = 0;
             PositiveNumbers = 0;
@@ -49,8 +56,8 @@ namespace SimpleTasks
                     if (array[i, j] > 0)
                         PositiveNumbers++;
                     if (array[i, j] < 0)
-                        NegativeNumbers--;
-                    else
+                        NegativeNumbers++;
+                    else if(array[i,j]==0)
                         ZeroElementCoordinates.Add(new Coordinates(i,j));
                 }
             }

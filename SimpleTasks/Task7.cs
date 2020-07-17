@@ -15,7 +15,21 @@ namespace SimpleTasks
 
         public void PalindromeString(string str)
         {
-            StringPalindrom = str.EndsWith(str);            
+            char[] symbolStr = str.ToCharArray();
+            int numberCharacters = symbolStr.Length;
+            if(numberCharacters==0)
+            {
+                throw new Exception("Строка не содержит символов!");
+            }
+            StringPalindrom = true;
+            for (int i = 0; i < numberCharacters/2; i++)
+            {
+                if (symbolStr[i] != symbolStr[numberCharacters - i-1])
+                {
+                    StringPalindrom = false;
+                }
+
+            }
         }
 
         public void Print()

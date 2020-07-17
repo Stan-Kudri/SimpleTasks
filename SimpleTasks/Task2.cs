@@ -18,6 +18,10 @@ namespace SimpleTasks
 
         public Task2(int rowCount = 10, int columnCount = 10)
         {
+            if(rowCount!=columnCount)
+            {
+                throw new Exception("Матрица не квадратная!!");
+            }
             Matrix = new int[rowCount, columnCount];
             for (int i = 0; i < Matrix.GetLength(0); i++)
                 for (int j = 0; j < Matrix.GetLength(1); j++)

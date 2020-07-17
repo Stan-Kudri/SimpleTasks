@@ -14,6 +14,10 @@ namespace SimpleTasks
 
         public void RearrangeLinesInPairs(string [,] array)
         {
+            if(array.GetLength(1)%2!=0)
+            {
+                throw new Exception("Для реализации попарной перестановке нужно четное количество столбцов!");
+            }
             ModifiedArray = new string[array.GetLength(0), array.GetLength(1)];
             for (int i = 0; i < array.GetLength(0); i++)
             {

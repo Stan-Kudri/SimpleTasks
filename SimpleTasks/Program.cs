@@ -12,6 +12,9 @@ namespace SimpleTasks
 
         static void Main(string[] args)
         {
+            var task = new Task12();
+            task.NumbersOutRange();
+            task.Print();
 
 
             Console.ReadLine();

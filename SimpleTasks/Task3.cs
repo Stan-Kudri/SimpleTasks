@@ -14,8 +14,12 @@ namespace SimpleTasks
         
         public void WordCount(string str)
         {
+            if(str.Length==0)
+            {
+                throw new Exception("Строка должна состоять из символов");
+            }
             char[] symbol = new char[] { ' ', ';', ':', '.', ',' };
-            wordCount = str.Split(symbol).Length;
+            wordCount = str.Split(symbol, StringSplitOptions.RemoveEmptyEntries).Length;
         }
 
         public void Print()

@@ -11,10 +11,14 @@ namespace SimpleTasks
 
     class Task9
     {
-        public float PercentVowelLetters;
+        public double PercentVowelLetters;
 
         public void VowelLettersPercentage(string str)
         {
+            if(str.Length == 0)
+            {
+                throw new Exception("Строка не содержит символов!");
+            }
             string vowel = "OAEIUY";
             int vowelLetters = 0;
             foreach (var symbol in str.ToUpper())
@@ -22,12 +26,12 @@ namespace SimpleTasks
                 if (vowel.Any(s => s == symbol))
                     vowelLetters++;
             }
-            PercentVowelLetters = vowelLetters / str.Length;
+            PercentVowelLetters =(float) (vowelLetters*100) / str.Length;
         }
 
         public void Print()
         {
-            Console.WriteLine($"Процентное вхождение гласных букв в исходную строку состовляет {PercentVowelLetters} %");
+            Console.WriteLine($"Процентное вхождение гласных букв в исходную строку состовляет {PercentVowelLetters:f2} %");
         }
     }
 }

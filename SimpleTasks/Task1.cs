@@ -11,7 +11,7 @@ namespace SimpleTasks
 
     class Task1
     {
-        private float Percent;
+        private double Percent;
 
         public void PercentageRatio(string str, char symbol)
         {
@@ -19,12 +19,14 @@ namespace SimpleTasks
                 Percent = 0;
 
             var count = str.Count(s => s == symbol);
+            Console.WriteLine(count + "        " + Percent + "         " + str.Length);
             Percent = count / str.Length;
+            Console.WriteLine(Percent);
         }
 
         public void Print()
         {
-            Console.WriteLine($"Процент вхождения символа состовляет : {Percent}");
+            Console.WriteLine($"Процент вхождения символа состовляет : {Percent:f2}");
         }
 
     }
