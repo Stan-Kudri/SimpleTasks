@@ -15,9 +15,9 @@ namespace SimpleTasks
 
         public void VowelLettersPercentage(string str)
         {
-            if(str.Length == 0)
+            if(str.Length == 0 || str == null)
             {
-                throw new Exception("Строка не содержит символов!");
+                throw new Exception("Строка заданна неправильно!");
             }
             string vowel = "OAEIUY";
             int vowelLetters = 0;

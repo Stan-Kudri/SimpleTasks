@@ -16,6 +16,10 @@ namespace SimpleTasks
 
         public void SplitArray(int[] array)
         {
+            if(array==null)
+            {
+                throw new Exception("Такой массив нельзя отсортировать");
+            }
             foreach (var split in array)
             {
                 if (split % 2 != 0)

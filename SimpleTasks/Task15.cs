@@ -16,6 +16,8 @@ namespace SimpleTasks
 
         public Task15(int value = 10)
         {
+            if (value < 1 )
+                throw new Exception("Реализовать задачу нельзя, из-за неправильного количества элементов!");
             array = new int[10];
             for (int i = 0; i < value; i++)
                 array[i] = rnd.Next(-10,10);

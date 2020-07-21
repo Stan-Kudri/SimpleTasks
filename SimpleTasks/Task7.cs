@@ -15,6 +15,8 @@ namespace SimpleTasks
 
         public void PalindromeString(string str)
         {
+            if (str == null)
+                throw new Exception("Строка равна null!");
             char[] symbolStr = str.ToCharArray();
             int numberCharacters = symbolStr.Length;
             if(numberCharacters==0)

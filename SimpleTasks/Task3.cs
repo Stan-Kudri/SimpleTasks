@@ -11,10 +11,10 @@ namespace SimpleTasks
     class Task3
     {
         private int wordCount;
-        
+
         public void WordCount(string str)
         {
-            if(str.Length==0)
+            if (str.Length == 0 || str==null)
             {
                 throw new Exception("Строка должна состоять из символов");
             }

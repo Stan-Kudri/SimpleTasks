@@ -13,6 +13,8 @@ namespace SimpleTasks
 
         public void NumbersSatisfyingTheCondition(int[] array)
         {
+            if (array == null)
+                throw new Exception("Для этого массива нельзя реализовать задачу!");
             AmountNumbers = array.Where(s => s > 0 && s < 125).Sum();
         }
 
