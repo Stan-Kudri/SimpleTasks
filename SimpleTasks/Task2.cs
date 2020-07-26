@@ -10,43 +10,34 @@ namespace SimpleTasks
     /*Задан массив действительных чисел размерности 10х10. Найти суммы элементов каждой строки, произведения элементов каждого столбца, 
     и максимальный элемент главной диагонали (подсказка: все элементы, для которых номер строки совпадает с номером столбца).*/
     
-    class Task2
+    class Task2:IPerformingSimpleTask
     {
-        private Random rnd = new Random();
-        private int[,] Matrix;
-        private CalculateMatrixElements Calculate;
+        private int[,] _matrix;
+        private CalculateMatrixElements _calculate;
+        
 
-        public Task2(int rowCount = 10, int columnCount = 10)
+        private void PrintMatrix()
         {
-            if(rowCount!=columnCount)
-            {
-                throw new Exception("Матрица не квадратная!!");
-            }
-            Matrix = new int[rowCount, columnCount];
-            for (int i = 0; i < Matrix.GetLength(0); i++)
-                for (int j = 0; j < Matrix.GetLength(1); j++)
-                    Matrix[i, j] = rnd.Next(0, 20);
-        }
-
-        public void PrintMatrix()
-        {
-            for (int i = 0; i < Matrix.GetLength(0); i++)
+            for (int i = 0; i < _matrix.GetLength(0); i++)
             {
                 Console.Write("|");
-                for (int j = 0; j < Matrix.GetLength(1); j++)
+                for (int j = 0; j < _matrix.GetLength(1); j++)
                 {
-                    Console.Write($" {Matrix[i, j]}");
+                    Console.Write($" {_matrix[i, j]}");
                 }
                 Console.WriteLine("|");
             }
         }
 
         public void Execute()
-        {            
-            var sumRow = SumMatrixRowElements(Matrix);
-            var columnProduct = ProductMatrixColumnElements(Matrix);
-            var maxDiagonalValue = MaxValueDiagonal(Matrix);
-            Calculate = new CalculateMatrixElements(sumRow,columnProduct , maxDiagonalValue );
+        {
+            _matrix = Randomazer.Intance.TwoDimensionalArray(10, 10);
+            PrintMatrix();
+            var sumRow = SumMatrixRowElements(_matrix);
+            var columnProduct = ProductMatrixColumnElements(_matrix);
+            var maxDiagonalValue = MaxValueDiagonal(_matrix);
+            _calculate = new CalculateMatrixElements(sumRow,columnProduct , maxDiagonalValue );
+            Print();
         }
 
         private int[] SumMatrixRowElements(int[,] matrix)
@@ -81,15 +72,15 @@ namespace SimpleTasks
                     maxDiagonalValue = matrix[i, i];
             return maxDiagonalValue;
         }
-        
-        public void Print()
+
+        private void Print()
         {
-            Console.WriteLine($"Сумма элементов каждой строки по очереди : {Calculate.SumRow.JoinToString(",")}");
-            Console.WriteLine($"Произведение элементов каждого столбца по очереди : {Calculate.ColumnProduct.JoinToString(",")}");
-            Console.WriteLine($"Максимальный элемент главной диагонали : {Calculate.MaxDiagonalValue}");
+            Console.WriteLine($"Сумма элементов каждой строки по очереди : {_calculate.SumRow.JoinToString(",")}");
+            Console.WriteLine($"Произведение элементов каждого столбца по очереди : \n{_calculate.ColumnProduct.JoinToString(",")}");
+            Console.WriteLine($"Максимальный элемент главной диагонали : {_calculate.MaxDiagonalValue}");
         }
 
-        public class CalculateMatrixElements
+        private class CalculateMatrixElements
         {
             public readonly int[] SumRow;
             public readonly BigInteger[] ColumnProduct;

@@ -8,35 +8,63 @@ namespace SimpleTasks
 {
     /*В двухмерном массиве переставьте попарно соседние строки, т.е. 1-ю со 2-ой, 3-ю с 4-й и т.д. Результат выведите на экран.*/
 
-    class Task13
+    class Task13 : IPerformingSimpleTask
     {
-        private string[,] ModifiedArray ;
+        private string[,] _array;
+        private string[,] _modifiedArray ;
+        private int _row;
+        private int _column;
 
-        public void RearrangeLinesInPairs(string [,] array)
+        public void Execute()
         {
-            if(array.GetLength(1)%2!=0 || array==null)
+            _array = Randomazer.Intance.TwoDimensionalArrayString();
+            _row = _array.GetLength(0);
+            _column = _array.GetLength(1);
+            RearrangeLinesInPairs();
+            PrintOriginalArray();
+            Print();
+        }
+
+        private void RearrangeLinesInPairs()
+        {
+            if (_column%2!=0 || _array == null)
             {
                 throw new Exception("Для реализации попарной перестановке нужно четное количество столбцов!");
             }
-            ModifiedArray = new string[array.GetLength(0), array.GetLength(1)];
-            for (int i = 0; i < array.GetLength(0); i++)
+            _modifiedArray = new string[_array.GetLength(0), _array.GetLength(1)];
+            for (int i = 0; i < _array.GetLength(0); i++)
             {
-                for (int j = 0; j < array.GetLength(1); j+=2)
+                for (int j = 0; j < _array.GetLength(1); j+=2)
                 {
-                    ModifiedArray[i, j] = array[i, j + 1];
-                    ModifiedArray[i, j + 1] = array[i, j];                    
+                    _modifiedArray[i, j] = _array[i, j + 1];
+                    _modifiedArray[i, j + 1] = _array[i, j];                    
                 }
             }
         }
 
-        public void Print()
+        private void PrintOriginalArray()
         {
-            for (int i = 0; i < ModifiedArray.GetLength(0); i++)
+            Console.WriteLine("Исходный массив строк:\n");
+            for (int i = 0; i < _array.GetLength(0); i++)
             {
                 Console.Write("|");
-                for (int j = 0; j < ModifiedArray.GetLength(1); j++)
+                for (int j = 0; j < _array.GetLength(1); j++)
                 {
-                    Console.Write($" {ModifiedArray[i, j]}");
+                    Console.Write($" {_array[i, j]}");
+                }
+                Console.WriteLine("|");
+            }
+        }
+
+        private void Print()
+        {
+            Console.WriteLine("\nИзмененный массив стрк:\n");
+            for (int i = 0; i < _modifiedArray.GetLength(0); i++)
+            {
+                Console.Write("|");
+                for (int j = 0; j < _modifiedArray.GetLength(1); j++)
+                {
+                    Console.Write($" {_modifiedArray[i, j]}");
                 }
                 Console.WriteLine("|");
             }

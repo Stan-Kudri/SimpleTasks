@@ -21,46 +21,71 @@ namespace SimpleTasks
         }
     }
 
-    class Task8
+    class Task8 : IPerformingSimpleTask
     {
-        private int NegativeNumbers;
-        private int PositiveNumbers;
-        private List<Coordinates> ZeroElementCoordinates = new List<Coordinates>();
+        private int[,] _matrix;
+        private int _negativeNumbers;
+        private int _positiveNumbers;
+        private List<Coordinates> _zeroElementCoordinates = new List<Coordinates>();
         
-        public void Print()
+
+        private void Print()
         {
-            Console.WriteLine($"Количество элементов матрицы больше 0 состовляет : {PositiveNumbers};");
-            Console.WriteLine($"Количество элементов матрицы меньше 0 состовляет : {NegativeNumbers};");
-            if (ZeroElementCoordinates.Count == 0)
+            Console.WriteLine($"Количество элементов матрицы больше 0 состовляет : {_positiveNumbers};");
+            Console.WriteLine($"Количество элементов матрицы меньше 0 состовляет : {_negativeNumbers};");
+            if (_zeroElementCoordinates.Count == 0)
             {
                 Console.WriteLine("Координаты элементов матрицы равные 0 не существует;");
             }
             else
             {
                 Console.Write("Координаты элементов матрицы равные 0: ");
-                foreach (var coordinat in ZeroElementCoordinates)
+                foreach (var coordinat in _zeroElementCoordinates)
                 {
                     Console.Write($"[{coordinat.Row},{coordinat.Column}]; ");
                 }
             }
         }
 
-        public void Execute(int[,] array)
+        private void PrintMatrix()
         {
-            NegativeNumbers = 0;
-            PositiveNumbers = 0;
-            for(int i = 0; i < array.GetLength(0); i++)
+            for (int i = 0; i < _matrix.GetLength(0); i++)
             {
-                for(int j = 0; j < array.GetLength(1); j++)
+                Console.Write("|");
+                for (int j = 0; j < _matrix.GetLength(1); j++)
                 {
-                    if (array[i, j] > 0)
-                        PositiveNumbers++;
-                    if (array[i, j] < 0)
-                        NegativeNumbers++;
-                    else if(array[i,j]==0)
-                        ZeroElementCoordinates.Add(new Coordinates(i,j));
+                    Console.Write($" {_matrix[i, j]}");
+                }
+                Console.WriteLine("|");
+            }
+        }
+
+        private void CompletingQuest()
+        {
+            _negativeNumbers = 0;
+            _positiveNumbers = 0;
+            for (int i = 0; i < _matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < _matrix.GetLength(1); j++)
+                {
+                    if (_matrix[i, j] > 0)
+                        _positiveNumbers++;
+                    if (_matrix[i, j] < 0)
+                        _negativeNumbers++;
+                    else if (_matrix[i, j] == 0)
+                        _zeroElementCoordinates.Add(new Coordinates(i, j));
                 }
             }
+        }
+
+        public void Execute()
+        {
+            int size = Randomazer.Intance.Number(5,25);
+            _matrix = Randomazer.Intance.TwoDimensionalArray(size);
+            CompletingQuest();
+            PrintMatrix();
+            Print();
+            
         }
         
     }

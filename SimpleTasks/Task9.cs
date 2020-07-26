@@ -9,29 +9,38 @@ namespace SimpleTasks
     /*Введите с клавиатуры строку произвольной длины и подсчитайте процент вхождения гласных букв 
      * латинского алфавита в строку (не различая регистры). («A», «E», «I», «O», «U», «Y»)*/
 
-    class Task9
+    class Task9 : IPerformingSimpleTask
     {
-        public double PercentVowelLetters;
+        private double _percentVowelLetters;
+        private string _str;
 
-        public void VowelLettersPercentage(string str)
+        public void Execute()
         {
-            if(str.Length == 0 || str == null)
+            _str = Randomazer.Intance.String(20,40);
+            VowelLettersPercentage();
+            Print();
+        }
+
+        private void VowelLettersPercentage()
+        {
+            if(_str.Length == 0 || _str == null)
             {
                 throw new Exception("Строка заданна неправильно!");
             }
             string vowel = "OAEIUY";
             int vowelLetters = 0;
-            foreach (var symbol in str.ToUpper())
+            foreach (var symbol in _str.ToUpper())
             {
                 if (vowel.Any(s => s == symbol))
                     vowelLetters++;
             }
-            PercentVowelLetters =(float) (vowelLetters*100) / str.Length;
+            _percentVowelLetters = (float) (vowelLetters*100) / _str.Length;
         }
 
-        public void Print()
+        private void Print()
         {
-            Console.WriteLine($"Процентное вхождение гласных букв в исходную строку состовляет {PercentVowelLetters:f2} %");
+            Console.WriteLine($"Исходная строка для выполнения задачи: {_str};");
+            Console.WriteLine($"Процентное вхождение гласных букв в исходную строку состовляет {_percentVowelLetters:f2} %");
         }
     }
 }

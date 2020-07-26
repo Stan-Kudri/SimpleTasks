@@ -9,24 +9,31 @@ namespace SimpleTasks
 
     //Введите с клавиатуры строку произвольной длины и подсчитайте процент вхождения заданного символа в строку.
 
-    class Task1
+    class Task1:IPerformingSimpleTask
     {
-        private double Percent;
+        private float _percent;
+        private string _str;
+        private char _symbol;
 
-        public void PercentageRatio(string str, char symbol)
+        public void Execute()
         {
-            if (string.IsNullOrEmpty(str))
-                Percent = 0;
+            _str = Randomazer.Intance.String();
+            _symbol = Randomazer.Intance.Symbol();
+            PercentageRatio();
+            Print();
+        }        
 
-            var count = str.Count(s => s == symbol);
-            Console.WriteLine(count + "        " + Percent + "         " + str.Length);
-            Percent = count / str.Length;
-            Console.WriteLine(Percent);
+        private void PercentageRatio()
+        {
+            if (string.IsNullOrEmpty(_str))
+                _percent = 0;
+            var count = _str.Count(s => s == _symbol);
+            _percent = (float) (count * 100 )/ _str.Length;
         }
 
-        public void Print()
+        private void Print()
         {
-            Console.WriteLine($"Процент вхождения символа состовляет : {Percent:f2}");
+            Console.WriteLine($"Процент вхождения ({_symbol}) в строке:\n{_str} \nCостовляет : {_percent:f2} %");
         }
 
     }

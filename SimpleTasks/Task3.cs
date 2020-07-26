@@ -8,23 +8,32 @@ namespace SimpleTasks
 {
     // В заданной строке текста определите количество слов. Каждое слово отделено друг от друга пробелом  и знаками.
 
-    class Task3
+    class Task3 : IPerformingSimpleTask
     {
-        private int wordCount;
+        private int _wordCount;
+        private string _str;
 
-        public void WordCount(string str)
+        public void Execute()
         {
-            if (str.Length == 0 || str==null)
+            _str = Randomazer.Intance.SentensWithPunctuation();
+            WordCount();
+            Print();
+        }
+
+        private void WordCount()
+        {
+            if (_str.Length == 0 || _str == null)
             {
                 throw new Exception("Строка должна состоять из символов");
             }
             char[] symbol = new char[] { ' ', ';', ':', '.', ',' };
-            wordCount = str.Split(symbol, StringSplitOptions.RemoveEmptyEntries).Length;
+            _wordCount = _str.Split(symbol, StringSplitOptions.RemoveEmptyEntries).Length;
         }
 
-        public void Print()
+        private void Print()
         {
-            Console.WriteLine($"Количество слов введенной строке равно {wordCount}");
+            Console.WriteLine($"Строка для выполнения задания: {_str};");
+            Console.WriteLine($"Количество слов введенной строке равно {_wordCount}");
         }
     }
 }

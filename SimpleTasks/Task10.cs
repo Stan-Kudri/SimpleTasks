@@ -9,18 +9,27 @@ namespace SimpleTasks
     /*Задан массив действительных чисел из N элементов (используйте генератор случайных чисел) или передав массив.
      * Определить количество элементов, значения которых находятся в диапазоне от -100 до +100.*/
 
-    class Task10
+    class Task10 : IPerformingSimpleTask
     {
-        private int AmountNumbersFromRange;
-        
-        public void NumberOfNumbersFromRange(int[] array)
+        private int _amountNumbersFromRange;
+        private int[] _array;
+
+        public void Execute()
         {
-            AmountNumbersFromRange = array.Where(s => s > -100 && s < 100).Count();
+            _array = Randomazer.Intance.OneDimensionalArray(60);
+            NumberOfNumbersFromRange();
+            Print();
         }
 
-        public void Print()
+        private void NumberOfNumbersFromRange()
         {
-            Console.WriteLine($"Количество действительных чисел в диапазоне от -100 до 100 состовляет {AmountNumbersFromRange}");
+            _amountNumbersFromRange = _array.Where(s => s > -100 && s < 100).Count();
+        }
+
+        private void Print()
+        {
+            Console.WriteLine($"Одномерный массив целых чисел: {_array.JoinToString(", ")};");
+            Console.WriteLine($"Количество действительных чисел в диапазоне от -100 до 100 состовляет {_amountNumbersFromRange}");
         }
     }
 }

@@ -9,32 +9,28 @@ namespace SimpleTasks
     /*Задан массив действительных чисел из N элементов (используйте генератор случайных чисел).
      * Определить количество элементов, значения которых находятся вне диапазона от -10 до +10.*/
 
-    class Task12
+    class Task12 : IPerformingSimpleTask
     {
-        static private Random rnd = new Random();
+        private int[] _array;
+        private int _numbersNoRange;
 
-        private int[] array;
-
-        private int NumbersNoRange;
-
-        public Task12(int count = 20)
+        public void Execute()
         {
-            array = new int[count];
-            for(int i = 0; i < count; i++)
-            {
-                array[i] = rnd.Next(-100,100);
-            }
+            int size = Randomazer.Intance.Number(30);
+            _array = Randomazer.Intance.OneDimensionalArray(size);
+            NumbersOutRange();
+            Print();
         }
 
-        public void NumbersOutRange()
+        private void NumbersOutRange()
         {
-            NumbersNoRange = array.Where(s => s < -10 || s > 10).Count();
+            _numbersNoRange = _array.Where(s => s < -10 || s > 10).Count();
         }
 
-        public void Print()
+        private void Print()
         {
-            Console.WriteLine(array.JoinToString(",", prefix: "Массив чисел => [", postfix: "]"));
-            Console.WriteLine("Количество чисел вне диапазона состовляет {0}", NumbersNoRange);
+            Console.WriteLine(_array.JoinToString(",", prefix: "Массив чисел => [", postfix: "]"));
+            Console.WriteLine("Количество чисел вне диапазона от -10 до +10 состовляет {0}", _numbersNoRange);
         }
 
     }

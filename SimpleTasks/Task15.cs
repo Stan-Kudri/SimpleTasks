@@ -8,30 +8,29 @@ namespace SimpleTasks
 {
     /*Задан генератором случайных чисел одномерный массив из действительных чисел. Найдите максимальное и минимальное число этого массива.*/
 
-    class Task15
+    class Task15 : IPerformingSimpleTask
     {
-        static private Random rnd = new Random();
 
-        private int[] array;
+        private int[] _array;
 
-        public Task15(int value = 10)
+        public void Execute()
         {
-            if (value < 1 )
-                throw new Exception("Реализовать задачу нельзя, из-за неправильного количества элементов!");
-            array = new int[10];
-            for (int i = 0; i < value; i++)
-                array[i] = rnd.Next(-10,10);
+            int size = Randomazer.Intance.Number(30);
+            _array = Randomazer.Intance.OneDimensionalArray(size);
+            PrintArray();
+            Print();
         }
+        
 
         public void PrintArray()
         {
-            Console.WriteLine(array.JoinToString(",", prefix: "Массив чисел => [", postfix: "]"));
+            Console.WriteLine(_array.JoinToString(",", prefix: "Массив чисел => [", postfix: "]"));
         }
 
-        public void OutputTask()
+        public void Print()
         {
-            Console.WriteLine($"Максимальное значение массива => {array.Max()}");
-            Console.WriteLine($"Минимальное значение массива => {array.Min()}");
+            Console.WriteLine($"Максимальное значение массива => {_array.Max()}");
+            Console.WriteLine($"Минимальное значение массива => {_array.Min()}");
         }
     }
 }

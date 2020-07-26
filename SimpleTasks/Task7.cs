@@ -9,34 +9,43 @@ namespace SimpleTasks
     /*Определите, является ли исходная строка символов палиндромом (читается одинаково с начала и с конца).
      Регистры символов и пробелы игнорируйте.*/
 
-    class Task7
+    class Task7 : IPerformingSimpleTask
     {
-        private bool StringPalindrom;
+        private bool _stringPalindrom;
+        private string _str;
 
-        public void PalindromeString(string str)
+        public void Execute()
         {
-            if (str == null)
+            _str = Randomazer.Intance.String();
+            PalindromeString();
+            Print();
+        }
+
+        private void PalindromeString()
+        {
+            if (_str == null)
                 throw new Exception("Строка равна null!");
-            char[] symbolStr = str.ToCharArray();
+            char[] symbolStr = _str.ToCharArray();
             int numberCharacters = symbolStr.Length;
             if(numberCharacters==0)
             {
                 throw new Exception("Строка не содержит символов!");
             }
-            StringPalindrom = true;
+            _stringPalindrom = true;
             for (int i = 0; i < numberCharacters/2; i++)
             {
                 if (symbolStr[i] != symbolStr[numberCharacters - i-1])
                 {
-                    StringPalindrom = false;
+                    _stringPalindrom = false;
                 }
 
             }
         }
 
-        public void Print()
+        private void Print()
         {
-            if(StringPalindrom == true)
+            Console.WriteLine($"Строка для проверки на полиндромность: {_str}");
+            if(_stringPalindrom == true)
                 Console.WriteLine("Исходная строка является полиндромной");
             else
                 Console.WriteLine("Исходная строка является не полиндромной");

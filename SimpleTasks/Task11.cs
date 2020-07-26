@@ -9,21 +9,30 @@ namespace SimpleTasks
     /*Задано пять произвольных целых чисел (элементы массива). Определить, является ли их расположение 
      *в массиве упорядоченным (т.е. по возрастанию или по убыванию) или неупорядоченным.*/
 
-    class Task11
+    class Task11 : IPerformingSimpleTask
     {
-        private bool OrderedArray;
+        private bool _orderedArray;
+        private int[] _array;
 
-        public void DefiningArrayOrdering(int[] array)
+        public void Execute()
         {
-            if (array.SequenceEqual(array.OrderByDescending(s => s)) || array.SequenceEqual(array.OrderBy(s => s)))
-                OrderedArray = true;
-            else
-                OrderedArray = false;
+            _array = Randomazer.Intance.OneDimensionalArray(5, -10, 10);
+            DefiningArrayOrdering();
+            Print();
         }
 
-        public void Print()
+        private void DefiningArrayOrdering()
         {
-            if( OrderedArray == true)
+            if (_array.SequenceEqual(_array.OrderByDescending(s => s)) || _array.SequenceEqual(_array.OrderBy(s => s)))
+                _orderedArray = true;
+            else
+                _orderedArray = false;
+        }
+
+        private void Print()
+        {
+            Console.WriteLine(_array.JoinToString(",", prefix: "Массив чисел => [", postfix: "]"));
+            if ( _orderedArray == true)
                 Console.WriteLine("Массив ялвляется упорядоченным");
             else
                 Console.WriteLine("Массив ялвляется неупорядоченным");

@@ -9,12 +9,21 @@ namespace SimpleTasks
     /*Задан одномерный массив целых чисел. Образуйте из него два отсортированных по возрастанию массива,
     содержащих четные и нечетные числа. Подсказка: четное число делится на 2 без остатка.*/ 
 
-    class Task4
+    class Task4 : IPerformingSimpleTask
     {
-        private List<int> Even = new List<int>();
-        private List<int> Odd = new List<int>();
+        private List<int> _even = new List<int>();
+        private List<int> _odd = new List<int>();
+        private int[] _array;
 
-        public void SplitArray(int[] array)
+        public void Execute()
+        {
+            int arraySize = Randomazer.Intance.Number(10,20);
+            _array = Randomazer.Intance.OneDimensionalArray(arraySize);
+            SplitArray(_array);
+            Print();
+        }
+
+        private void SplitArray(int[] array)
         {
             if(array==null)
             {
@@ -24,21 +33,22 @@ namespace SimpleTasks
             {
                 if (split % 2 != 0)
                 {
-                    Odd.Add(split);
+                    _odd.Add(split);
                 }
                 else
                 {
-                    Even.Add(split);
+                    _even.Add(split);
                 }
             }
-            Odd.Sort();
-            Even.Sort();            
+            _odd.Sort();
+            _even.Sort();            
         }
 
-        public void Print()
+        private void Print()
         {
-            Console.WriteLine(Even.JoinToString(",", prefix: "Even = [", postfix: "]"));
-            Console.WriteLine(Odd.JoinToString(",", prefix: "Odd = [", postfix: "]"));
+            Console.WriteLine($"Одномерный массив целых чисел: {_array.JoinToString(", ")};");
+            Console.WriteLine(_even.JoinToString(",", prefix: "Even = [", postfix: "]"));
+            Console.WriteLine(_odd.JoinToString(",", prefix: "Odd = [", postfix: "]"));
         }
         
         /*public (int[] Even, int[] Odd) SplitArray(int[] arrayForSplit)
