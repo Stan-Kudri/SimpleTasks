@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    /*Задано пять произвольных целых чисел (элементы массива). Определить, является ли их расположение 
-     *в массиве упорядоченным (т.е. по возрастанию или по убыванию) или неупорядоченным.*/
-
-    class Task11 : IPerformingSimpleTask
+    class Task11 : ISimpleTaskExecute
     {
         private bool _orderedArray;
         private int[] _array;
+
+        public string Name { get; } = "Задано пять произвольных целых чисел (элементы массива). Определить, является ли их расположение в массиве упорядоченным (т.е. по возрастанию или по убыванию) или неупорядоченным.";
 
         public void Execute()
         {

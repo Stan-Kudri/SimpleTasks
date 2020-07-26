@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    /*Определите, присутствует ли в тексте, заданном в виде строки, некоторое слово (различие регистра игнорируйте).*/
-
-    class Task14 : IPerformingSimpleTask
+    class Task14 : ISimpleTaskExecute
     {
         private bool _wordInString;
         private string _str;
         private string _word;
+
+        public string Name { get; } = "Определите, присутствует ли в тексте, заданном в виде строки, некоторое слово (различие регистра игнорируйте).";
 
         public void Execute()
         {

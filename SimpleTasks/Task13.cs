@@ -6,23 +6,37 @@ using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    /*В двухмерном массиве переставьте попарно соседние строки, т.е. 1-ю со 2-ой, 3-ю с 4-й и т.д. Результат выведите на экран.*/
-
-    class Task13 : IPerformingSimpleTask
+    class Task13 : ISimpleTaskExecute
     {
         private string[,] _array;
         private string[,] _modifiedArray ;
         private int _row;
         private int _column;
 
+        public string Name { get; } = "В двухмерном массиве переставьте попарно соседние строки, т.е. 1-ю со 2-ой, 3-ю с 4-й и т.д. Результат выведите на экран.";
+
         public void Execute()
         {
             _array = Randomazer.Intance.TwoDimensionalArrayString();
             _row = _array.GetLength(0);
             _column = _array.GetLength(1);
-            RearrangeLinesInPairs();
             PrintOriginalArray();
+            RearrangeLinesInPairs();
             Print();
+        }
+
+        private void PrintOriginalArray()
+        {
+            Console.WriteLine("Исходный массив строк:\n");
+            for (int i = 0; i < _array.GetLength(0); i++)
+            {
+                Console.Write("|");
+                for (int j = 0; j < _array.GetLength(1); j++)
+                {
+                    Console.Write($" {_array[i, j]}");
+                }
+                Console.WriteLine("|");
+            }
         }
 
         private void RearrangeLinesInPairs()
@@ -39,20 +53,6 @@ namespace SimpleTasks
                     _modifiedArray[i, j] = _array[i, j + 1];
                     _modifiedArray[i, j + 1] = _array[i, j];                    
                 }
-            }
-        }
-
-        private void PrintOriginalArray()
-        {
-            Console.WriteLine("Исходный массив строк:\n");
-            for (int i = 0; i < _array.GetLength(0); i++)
-            {
-                Console.Write("|");
-                for (int j = 0; j < _array.GetLength(1); j++)
-                {
-                    Console.Write($" {_array[i, j]}");
-                }
-                Console.WriteLine("|");
             }
         }
 

@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    /*Определите, является ли исходная строка символов палиндромом (читается одинаково с начала и с конца).
-     Регистры символов и пробелы игнорируйте.*/
-
-    class Task7 : IPerformingSimpleTask
+    class Task7 : ISimpleTaskExecute
     {
         private bool _stringPalindrom;
         private string _str;
+
+        public string Name { get; } = "Определите, является ли исходная строка символов палиндромом (читается одинаково с начала и с конца). Регистры символов и пробелы игнорируйте.";
 
         public void Execute()
         {

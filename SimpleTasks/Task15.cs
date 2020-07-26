@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    /*Задан генератором случайных чисел одномерный массив из действительных чисел. Найдите максимальное и минимальное число этого массива.*/
-
-    class Task15 : IPerformingSimpleTask
+    class Task15 : ISimpleTaskExecute
     {
-
         private int[] _array;
+
+        public string Name { get; } = "Задан генератором случайных чисел одномерный массив из действительных чисел. Найдите максимальное и минимальное число этого массива.";
 
         public void Execute()
         {

@@ -5,15 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SimpleTasks
-{
-
-    //Введите с клавиатуры строку произвольной длины и подсчитайте процент вхождения заданного символа в строку.
-
-    class Task1:IPerformingSimpleTask
+{   
+    class Task1:ISimpleTaskExecute
     {
         private float _percent;
         private string _str;
         private char _symbol;
+
+        public string Name { get; } = "Введите с клавиатуры строку произвольной длины и подсчитайте процент вхождения заданного символа в строку.";
 
         public void Execute()
         {
@@ -40,11 +39,4 @@ namespace SimpleTasks
     
 }
 
-        /*public Dictionary<char, int> GetCharRepeatCount(string str)
-        {
-            return str
-                .GroupBy(s => s)
-                .ToDictionary(s => s.Key, s => s.Count());
-        }
-        */
 

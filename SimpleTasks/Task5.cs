@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    //В заданном массиве действительных чисел найдите разность между максимальным и минимальным числом.
-
-    class Task5 : IPerformingSimpleTask
+    class Task5 : ISimpleTaskExecute
     {
         private int _difference;
         private int _maxValue;
         private int _minValue;
         private int[] _array;
+
+        public string Name { get; } = "В заданном массиве действительных чисел найдите разность между максимальным и минимальным числом.";
 
         public void Execute()
         {

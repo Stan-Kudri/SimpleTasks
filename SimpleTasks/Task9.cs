@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    /*Введите с клавиатуры строку произвольной длины и подсчитайте процент вхождения гласных букв 
-     * латинского алфавита в строку (не различая регистры). («A», «E», «I», «O», «U», «Y»)*/
-
-    class Task9 : IPerformingSimpleTask
+    class Task9 : ISimpleTaskExecute
     {
         private double _percentVowelLetters;
         private string _str;
+
+        public string Name { get; } = "Введите с клавиатуры строку произвольной длины и подсчитайте процент вхождения гласных букв латинского алфавита в строку(не различая регистры). («A», «E», «I», «O», «U», «Y»)";
 
         public void Execute()
         {

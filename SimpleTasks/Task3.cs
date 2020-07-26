@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    // В заданной строке текста определите количество слов. Каждое слово отделено друг от друга пробелом  и знаками.
-
-    class Task3 : IPerformingSimpleTask
+    class Task3 : ISimpleTaskExecute
     {
         private int _wordCount;
         private string _str;
+
+        public string Name { get; } = "В заданной строке текста определите количество слов. Каждое слово отделено друг от друга пробелом  и знаками.";
 
         public void Execute()
         {

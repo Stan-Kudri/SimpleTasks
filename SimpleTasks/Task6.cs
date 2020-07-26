@@ -6,19 +6,25 @@ using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    //В одномерном массиве из 100 чисел M[] подсчитайте сумму элементов, удовлетворяющих условию 0 < M[i] <125.
-    class Task6 : IPerformingSimpleTask
+    class Task6 : ISimpleTaskExecute
     {
         private int _amountNumbers;
         private int[] _array;
+
+        public string Name { get; } = "В одномерном массиве из 100 чисел M[] подсчитайте сумму элементов, удовлетворяющих условию 0 < M[i] <125.";
 
         public void Execute()
         {
             int arraySize = 100;
             _array = Randomazer.Intance.OneDimensionalArray(arraySize);
-            NumbersSatisfyingTheCondition();
             PrintArray();
+            NumbersSatisfyingTheCondition();
             Print();
+        }
+
+        private void PrintArray()
+        {
+            Console.WriteLine($"Массив чисел из 100 элементов: {_array.JoinToString(",")}");
         }
 
         private void NumbersSatisfyingTheCondition()
@@ -26,11 +32,6 @@ namespace SimpleTasks
             if (_array == null)
                 throw new Exception("Для этого массива нельзя реализовать задачу!");
             _amountNumbers = _array.Where(s => s > 0 && s < 125).Sum();
-        }
-
-        private void PrintArray()
-        {
-            Console.WriteLine($"Массив чисел из 100 элементов: {_array.JoinToString(",")}");
         }
 
         private void Print()

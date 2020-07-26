@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    /*Задан массив действительных чисел из N элементов (используйте генератор случайных чисел) или передав массив.
-     * Определить количество элементов, значения которых находятся в диапазоне от -100 до +100.*/
-
-    class Task10 : IPerformingSimpleTask
+    class Task10 : ISimpleTaskExecute
     {
         private int _amountNumbersFromRange;
         private int[] _array;
+
+        public string Name { get; } = "Задан массив действительных чисел из N элементов (используйте генератор случайных чисел) или передав массив. Определить количество элементов, значения которых находятся в диапазоне от -100 до +100.";
 
         public void Execute()
         {

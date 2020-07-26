@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    /*Задан одномерный массив целых чисел. Образуйте из него два отсортированных по возрастанию массива,
-    содержащих четные и нечетные числа. Подсказка: четное число делится на 2 без остатка.*/ 
-
-    class Task4 : IPerformingSimpleTask
+    class Task4 : ISimpleTaskExecute
     {
         private List<int> _even = new List<int>();
         private List<int> _odd = new List<int>();
         private int[] _array;
+
+        public string Name { get; } = "Задан одномерный массив целых чисел. Образуйте из него два отсортированных по возрастанию массива, содержащих четные и нечетные числа.Подсказка: четное число делится на 2 без остатка.";
 
         public void Execute()
         {
@@ -51,10 +50,5 @@ namespace SimpleTasks
             Console.WriteLine(_odd.JoinToString(",", prefix: "Odd = [", postfix: "]"));
         }
         
-        /*public (int[] Even, int[] Odd) SplitArray(int[] arrayForSplit)
-        {
-            arrayForSplit.GroupBy(s => s % 2 == 0).OrderBy(s => s);
-
-        }*/
     }
 }

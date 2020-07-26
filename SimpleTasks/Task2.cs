@@ -6,16 +6,25 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SimpleTasks
-{
-    /*Задан массив действительных чисел размерности 10х10. Найти суммы элементов каждой строки, произведения элементов каждого столбца, 
-    и максимальный элемент главной диагонали (подсказка: все элементы, для которых номер строки совпадает с номером столбца).*/
-    
-    class Task2:IPerformingSimpleTask
+{    
+    class Task2:ISimpleTaskExecute
     {
         private int[,] _matrix;
         private CalculateMatrixElements _calculate;
-        
 
+        public string Name { get; } = "Задан массив действительных чисел размерности 10х10. Найти суммы элементов каждой строки, произведения элементов каждого столбца, и максимальный элемент главной диагонали(подсказка: все элементы, для которых номер строки совпадает с номером столбца).";
+
+        public void Execute()
+        {
+            _matrix = Randomazer.Intance.TwoDimensionalArray(10, 10);
+            PrintMatrix();
+            var sumRow = SumMatrixRowElements(_matrix);
+            var columnProduct = ProductMatrixColumnElements(_matrix);
+            var maxDiagonalValue = MaxValueDiagonal(_matrix);
+            _calculate = new CalculateMatrixElements(sumRow, columnProduct, maxDiagonalValue);
+            Print();
+        }
+        
         private void PrintMatrix()
         {
             for (int i = 0; i < _matrix.GetLength(0); i++)
@@ -28,18 +37,7 @@ namespace SimpleTasks
                 Console.WriteLine("|");
             }
         }
-
-        public void Execute()
-        {
-            _matrix = Randomazer.Intance.TwoDimensionalArray(10, 10);
-            PrintMatrix();
-            var sumRow = SumMatrixRowElements(_matrix);
-            var columnProduct = ProductMatrixColumnElements(_matrix);
-            var maxDiagonalValue = MaxValueDiagonal(_matrix);
-            _calculate = new CalculateMatrixElements(sumRow,columnProduct , maxDiagonalValue );
-            Print();
-        }
-
+        
         private int[] SumMatrixRowElements(int[,] matrix)
         {
             int[] sumRow = new int[matrix.GetLength(0)];

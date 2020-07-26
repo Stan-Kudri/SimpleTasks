@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    /*Задана квадратная матрица целых чисел.Подсчитайте количество отрицательных и положительных элементов,
-     * а также выведите на печать координаты нулевых элементов (номер строки и номер столбца).*/
-
     class Coordinates
     {
         public readonly int Row;
@@ -21,30 +18,23 @@ namespace SimpleTasks
         }
     }
 
-    class Task8 : IPerformingSimpleTask
+    class Task8 : ISimpleTaskExecute
     {
         private int[,] _matrix;
         private int _negativeNumbers;
         private int _positiveNumbers;
         private List<Coordinates> _zeroElementCoordinates = new List<Coordinates>();
-        
 
-        private void Print()
+        public string Name { get; } = "Задана квадратная матрица целых чисел.Подсчитайте количество отрицательных и положительных элементов, а также выведите на печать координаты нулевых элементов(номер строки и номер столбца).*/";
+
+        public void Execute()
         {
-            Console.WriteLine($"Количество элементов матрицы больше 0 состовляет : {_positiveNumbers};");
-            Console.WriteLine($"Количество элементов матрицы меньше 0 состовляет : {_negativeNumbers};");
-            if (_zeroElementCoordinates.Count == 0)
-            {
-                Console.WriteLine("Координаты элементов матрицы равные 0 не существует;");
-            }
-            else
-            {
-                Console.Write("Координаты элементов матрицы равные 0: ");
-                foreach (var coordinat in _zeroElementCoordinates)
-                {
-                    Console.Write($"[{coordinat.Row},{coordinat.Column}]; ");
-                }
-            }
+            int size = Randomazer.Intance.Number(5, 25);
+            _matrix = Randomazer.Intance.TwoDimensionalArray(size);
+            PrintMatrix();
+            CompletingQuest();
+            Print();
+
         }
 
         private void PrintMatrix()
@@ -78,15 +68,25 @@ namespace SimpleTasks
             }
         }
 
-        public void Execute()
+        private void Print()
         {
-            int size = Randomazer.Intance.Number(5,25);
-            _matrix = Randomazer.Intance.TwoDimensionalArray(size);
-            CompletingQuest();
-            PrintMatrix();
-            Print();
-            
+            Console.WriteLine($"Количество элементов матрицы больше 0 состовляет : {_positiveNumbers};");
+            Console.WriteLine($"Количество элементов матрицы меньше 0 состовляет : {_negativeNumbers};");
+            if (_zeroElementCoordinates.Count == 0)
+            {
+                Console.WriteLine("Координаты элементов матрицы равные 0 не существует;");
+            }
+            else
+            {
+                Console.Write("Координаты элементов матрицы равные 0: ");
+                foreach (var coordinat in _zeroElementCoordinates)
+                {
+                    Console.Write($"[{coordinat.Row},{coordinat.Column}]; ");
+                }
+            }
         }
+
+
         
     }
 }

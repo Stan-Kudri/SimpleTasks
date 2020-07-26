@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    interface IPerformingSimpleTask
+    interface ISimpleTaskExecute
     {
+        string Name { get; }
         void Execute();
     }
 }
