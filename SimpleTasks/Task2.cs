@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleTasks
-{    
-    class Task2:ISimpleTaskExecute
+{
+    class Task2:ISimpleTask
     {
         private int[,] _matrix;
         private CalculateMatrixElements _calculate;
@@ -89,8 +85,7 @@ namespace SimpleTasks
                 SumRow = sumRow;
                 ColumnProduct = columnProduct;
                 MaxDiagonalValue = maxDiagonalValue;
-            }           
-            
+            }            
         }
     }
 }

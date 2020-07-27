@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SimpleTasks
+﻿namespace SimpleTasks
 {
-    interface ISimpleTaskExecute
+    interface ISimpleTask
     {
         string Name { get; }
         void Execute();

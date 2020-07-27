@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    class Task12 : ISimpleTaskExecute
+    class Task12 : ISimpleTask
     {
         private int[] _array;
         private int _numbersNoRange;

@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleTasks
-{   
-    class Task1:ISimpleTaskExecute
+{
+    class Task1 : ISimpleTask
     {
         private float _percent;
         private string _str;
@@ -27,7 +24,7 @@ namespace SimpleTasks
             if (string.IsNullOrEmpty(_str))
                 _percent = 0;
             var count = _str.Count(s => s == _symbol);
-            _percent = (float) (count * 100 )/ _str.Length;
+            _percent = (count * 100)/ (float)_str.Length;
         }
 
         private void Print()

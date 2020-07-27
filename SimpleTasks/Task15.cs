@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    class Task15 : ISimpleTaskExecute
+    class Task15 : ISimpleTask
     {
         private int[] _array;
 
@@ -14,7 +11,7 @@ namespace SimpleTasks
 
         public void Execute()
         {
-            int size = Randomazer.Intance.Number(30);
+            int size = Randomazer.Intance.Number(10,30);
             _array = Randomazer.Intance.OneDimensionalArray(size);
             PrintArray();
             Print();

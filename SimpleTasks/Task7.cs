@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    class Task7 : ISimpleTaskExecute
+    class Task7 : ISimpleTask
     {
         private bool _stringPalindrom;
         private string _str;
@@ -22,14 +18,12 @@ namespace SimpleTasks
 
         private void PalindromeString()
         {
-            if (_str == null)
-                throw new Exception("Строка равна null!");
             char[] symbolStr = _str.ToCharArray();
             int numberCharacters = symbolStr.Length;
-            if(numberCharacters==0)
-            {
-                throw new Exception("Строка не содержит символов!");
-            }
+
+            if (_str == null && numberCharacters == 0)
+                throw new Exception("Строка задана не верно!");
+           
             _stringPalindrom = true;
             for (int i = 0; i < numberCharacters/2; i++)
             {
@@ -44,10 +38,14 @@ namespace SimpleTasks
         private void Print()
         {
             Console.WriteLine($"Строка для проверки на полиндромность: {_str}");
-            if(_stringPalindrom == true)
+            if (_stringPalindrom == true)
+            {
                 Console.WriteLine("Исходная строка является полиндромной");
+            }
             else
+            {
                 Console.WriteLine("Исходная строка является не полиндромной");
+            }
         }
     }
 }

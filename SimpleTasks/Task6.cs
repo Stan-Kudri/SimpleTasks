@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    class Task6 : ISimpleTaskExecute
+    class Task6 : ISimpleTask
     {
         private int _amountNumbers;
         private int[] _array;
@@ -31,6 +28,7 @@ namespace SimpleTasks
         {
             if (_array == null)
                 throw new Exception("Для этого массива нельзя реализовать задачу!");
+
             _amountNumbers = _array.Where(s => s > 0 && s < 125).Sum();
         }
 

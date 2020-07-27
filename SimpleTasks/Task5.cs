@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    class Task5 : ISimpleTaskExecute
+    class Task5 : ISimpleTask
     {
         private int _difference;
         private int _maxValue;
@@ -41,9 +38,13 @@ namespace SimpleTasks
         {
             Console.WriteLine($"Одномерный массив целых чисел: {_array.JoinToString(", ")};");
             if (_difference != 0)
-                Console.WriteLine("Разница между максимальным ({0}) и минимальным ({1}) числом массива состовляет {2}",_maxValue,_minValue,_difference);
+            {
+                Console.WriteLine("Разница между максимальным ({0}) и минимальным ({1}) числом массива состовляет {2}", _maxValue, _minValue, _difference);
+            }               
             else
+            {
                 Console.WriteLine("Количество элементов не удовлетворяет условиям!!");
+            }
         }
     }
 }

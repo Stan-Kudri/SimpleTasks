@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    class Task3 : ISimpleTaskExecute
+    class Task3 : ISimpleTask
     {
         private int _wordCount;
         private string _str;
@@ -23,9 +19,8 @@ namespace SimpleTasks
         private void WordCount()
         {
             if (_str.Length == 0 || _str == null)
-            {
                 throw new Exception("Строка должна состоять из символов");
-            }
+
             char[] symbol = new char[] { ' ', ';', ':', '.', ',' };
             _wordCount = _str.Split(symbol, StringSplitOptions.RemoveEmptyEntries).Length;
         }

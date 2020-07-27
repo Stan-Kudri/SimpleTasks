@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
@@ -18,7 +15,7 @@ namespace SimpleTasks
         }
     }
 
-    class Task8 : ISimpleTaskExecute
+    class Task8 : ISimpleTask
     {
         private int[,] _matrix;
         private int _negativeNumbers;
@@ -59,11 +56,17 @@ namespace SimpleTasks
                 for (int j = 0; j < _matrix.GetLength(1); j++)
                 {
                     if (_matrix[i, j] > 0)
+                    {
                         _positiveNumbers++;
+                    }
                     if (_matrix[i, j] < 0)
+                    {
                         _negativeNumbers++;
+                    }
                     else if (_matrix[i, j] == 0)
+                    {
                         _zeroElementCoordinates.Add(new Coordinates(i, j));
+                    }
                 }
             }
         }
@@ -83,6 +86,7 @@ namespace SimpleTasks
                 {
                     Console.Write($"[{coordinat.Row},{coordinat.Column}]; ");
                 }
+                Console.WriteLine();
             }
         }
 

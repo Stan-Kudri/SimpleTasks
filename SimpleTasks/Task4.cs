@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    class Task4 : ISimpleTaskExecute
+    class Task4 : ISimpleTask
     {
         private List<int> _even = new List<int>();
         private List<int> _odd = new List<int>();
@@ -25,9 +23,8 @@ namespace SimpleTasks
         private void SplitArray(int[] array)
         {
             if(array==null)
-            {
                 throw new Exception("Такой массив нельзя отсортировать");
-            }
+
             foreach (var split in array)
             {
                 if (split % 2 != 0)

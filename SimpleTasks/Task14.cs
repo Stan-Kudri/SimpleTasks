@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    class Task14 : ISimpleTaskExecute
+    class Task14 : ISimpleTask
     {
         private bool _wordInString;
         private string _str;
@@ -25,16 +21,20 @@ namespace SimpleTasks
 
         private void WordPresenceInString()
         {
-            _wordInString = _str.IndexOf(_word, StringComparison.OrdinalIgnoreCase)!=-1 ? true: false ;
+            _wordInString = _str.IndexOf(_word, StringComparison.OrdinalIgnoreCase) != -1 ? true: false ;
         }
 
         private void Print()
         {
             Console.WriteLine($"В строке:\n({_str});");
             if (_wordInString)
+            {
                 Console.WriteLine($"Слово {_word} встречается в строке");
+            }
             else
+            {
                 Console.WriteLine($"Слово {_word} не встречается в строке!");
+            }
         }
     }
 }

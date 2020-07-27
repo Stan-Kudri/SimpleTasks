@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
@@ -12,6 +10,7 @@ namespace SimpleTasks
         private char[] _symbol;
         private string[] _words;
         private string[] _wordsWithPunctuation;
+
         private static Randomazer _intance;
 
         public static Randomazer Intance
@@ -27,7 +26,7 @@ namespace SimpleTasks
         private Randomazer()
         {
             _symbol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
-            _words = new string[] { "Кот", "Собака", "Еж", "Змея", "Волк", "Медведь", "Крот" };
+            _words = new string[] { "Кот", "Собака", "Еж", "Змея", "Волк", "Медведь", "Крот", "Я", string.Empty };
             _rnd = new Random();
             _wordsWithPunctuation = _words.Concat(new[] { ", ", " ", ".", ":" }).ToArray();
         }
@@ -105,11 +104,12 @@ namespace SimpleTasks
         {
             return SentensCore(_wordsWithPunctuation);
         }
-
+        
         private string SentensCore(string[] wordsArray)
         {
             int numberWords = Number(20, 30);
             StringBuilder sentens = new StringBuilder(240);
+
             for (int i = 0; i < numberWords; i++)
             {
                 var randomWord = RandomItem(wordsArray);

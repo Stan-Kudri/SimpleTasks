@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    class Task9 : ISimpleTaskExecute
+    class Task9 : ISimpleTask
     {
         private double _percentVowelLetters;
         private string _str;
@@ -23,14 +21,14 @@ namespace SimpleTasks
         private void VowelLettersPercentage()
         {
             if(_str.Length == 0 || _str == null)
-            {
                 throw new Exception("Строка заданна неправильно!");
-            }
+
             string vowel = "OAEIUY";
             int vowelLetters = 0;
-            foreach (var symbol in _str.ToUpper())
+            foreach (var symbol in _str)
             {
-                if (vowel.Any(s => s == symbol))
+                var upperSymbol = char.ToUpper(symbol);
+                if (vowel.Contains(upperSymbol))
                     vowelLetters++;
             }
             _percentVowelLetters = (float) (vowelLetters*100) / _str.Length;

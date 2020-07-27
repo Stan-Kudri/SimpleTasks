@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleTasks
 {
-    class Task13 : ISimpleTaskExecute
+    class Task13 : ISimpleTask
     {
         private string[,] _array;
         private string[,] _modifiedArray ;
@@ -42,9 +38,8 @@ namespace SimpleTasks
         private void RearrangeLinesInPairs()
         {
             if (_column%2!=0 || _array == null)
-            {
                 throw new Exception("Для реализации попарной перестановке нужно четное количество столбцов!");
-            }
+
             _modifiedArray = new string[_array.GetLength(0), _array.GetLength(1)];
             for (int i = 0; i < _array.GetLength(0); i++)
             {
