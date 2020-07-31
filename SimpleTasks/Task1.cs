@@ -13,7 +13,7 @@ namespace SimpleTasks
 
         public void Execute()
         {
-            _str = Randomazer.Intance.String();
+            _str = Randomazer.Intance.String(5,30);
             _symbol = Randomazer.Intance.Symbol();
             PercentageRatio();
             Print();
